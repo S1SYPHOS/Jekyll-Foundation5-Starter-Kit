@@ -1,13 +1,13 @@
 {
-  "name": "jekyll-susy-starter-kit",
-  "version": "1.0.0",
+  "name": "jekyll-foundation5-starter-kit",
+  "version": "0.0.1",
   "homepage": "http://www.website.info",
-  "description": "Jekyll+Susy Starter Kit",
+  "description": "Jekyll+Foundation5 Starter Kit",
   "author": "S1SYPHOS <hello@daktylos.net>",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "susy": "~2.2.5",
+    "foundation": "zurb/bower-foundation",
     "jquery": "~2.1.4"
   },
   "devDependencies": {
