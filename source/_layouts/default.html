@@ -9,39 +9,70 @@
   <!--[if lt IE 9]>
   <div data-alert class="browserupgrade" class="browsehappy">Please <a href="http://browsehappy.com/">upgrade your browser</a>. <a href="#" class="close">&times;</a></div>
   <![endif]-->
-  <div class="outer-wrap">
-    <div class="inner-wrap">
-      <div class="off-canvas">
-        <ul class="off-canvas-list">
-          <li class="off-canvas-list__item"><a href="#">Link to Page 1</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 2</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 3</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 4</a></li>
-          <li class="off-canvas-list__item off-canvas--close"><a href="#">Close</a></li>
-        </ul>
-      </div>
-      <div class="container">
-        <header role="banner">
-          <h1>This is a header</h1>
-
-          <div class="off-canvas-toggle">
-            <button class="off-canvas-toggle__button">Click Me!</button>
-        </div>
-        </header>
-        <div role="main">
-          {{ content }}
-          <aside><h3>This is an aside</h3></aside>
-        </div>
-        <footer role="contentinfo"><h2>This is a footer</h2></footer>
-      </div>
-    </div>
-  </div>
+  <div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap">
+<!-- Add header and nav here -->
+<header id="header" class="row">
+<div class="small-12 columns">
+<section class="right show-for-medium-up mam">
+<ul class="inline-list">
+{% include nav.html %}
+</ul>
+</section>
+<section class="right show-for-small">
+<ul class="inline-list mam">
+<li>
+<a class="right-off-canvas-toggle" href="#"><i class="fa fa-bars fa-lg">
+</i></a>
+</li>
+</ul>
+</section>
+<h1><a href="{{ site.url }}">{{ site.brand }}</a></h1>
+</div>
+</header>
+<!-- Off Canvas Menu -->
+<aside class="right-off-canvas-menu">
+<!-- navigation list goes here -->
+<ul class="off-canvas-list">
+{% include nav.html %}
+</ul>
+</aside>
+<div class="row">
+<section role="main">
+<div class="small-12 columns">
+{{ content }}
+</div>
+</section>
+</div>
+<footer class="site-footer row" role="contentinfo">
+<hr/>
+<div class="large-12 columns">
+<ul class="inline-list">
+{% include nav.html %}
+</ul>
+<p class="quiet copyright right"> <a href="https://twitter.com/{{ site.twitter }}">
+<i class="fa fa-twitter">
+</i>
+@{{ site.twitter }}</a>, <a href="https://github.com/{{ site.github }}/">
+<i class="fa fa-github">
+</i>
+@{{ site.github }}</a> {{ site.year }}.</p>
+</div>
+</footer>
+<!-- close the off-canvas menu -->
+<a class="exit-off-canvas"></a>
+</div>
+</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
   <!-- build:js(source) /js/scripts.js -->
   <script src="/js/plugins.js"></script>
+  <script src="/js/vendor/foundation.min.js"></script>
   <script src="/js/main.js"></script>
   <!-- endbuild -->
+  <script>$(document).foundation();</script>
+
+  </script>
 </body>
 </html>
