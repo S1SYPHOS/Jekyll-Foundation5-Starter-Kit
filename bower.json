@@ -7,13 +7,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation": "zurb/bower-foundation",
-    "jquery": "~2.1.4"
+    "foundation": "zurb/bower-foundation"
   },
   "devDependencies": {
     "loadcss": "~0.1.7",
-    "OptimizedWebfontLoading": "git://github.com/bdadam/OptimizedWebfontLoading.git",
-    "normalize.css": "latest",
-    "breakpoint-sass": "~2.6.1"
+    "OptimizedWebfontLoading": "git://github.com/bdadam/OptimizedWebfontLoading.git"
   }
 }
