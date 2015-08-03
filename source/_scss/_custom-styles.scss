@@ -1,51 +1,3 @@
-// IMPORTS
-@import '../../bower_components/susy/sass/susy';
-@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
-
-// SUSY-MAP - http://susy.readthedocs.org/en/latest/settings/
-$susy: (
-  // flow: ltr,
-  // math: fluid,
-  // output: float,
-  // gutter-position: after,
-  container: 64em,
-  // container-position: center,
-  columns: 12,
-  gutters: 0.25,
-  // column-width: false,
-  global-box-sizing: border-box,
-  last-flow: to,
-  debug: (
-    image: show-columns,
-    // color: rgba(#66f, .25),
-    // output: background,
-    // toggle: bottom left,
-  ),
-  use-custom: (
-    // background-image: true,
-    // background-options: false,
-    // box-sizing: true,
-    clearfix: true,
-    // rem: true,
-  )
-);
-
-// CUSTOM CLEARFIX MIXIN
-@mixin clearfix {
-  &:before,
-  &:after {
-    display: table;
-    content: ' ';
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-// BOX-SIZING: BORDER BOX
-@include border-box-sizing;
-
 // DEFAULT STYLES
 html {
   font-family: "PT Sans", sans-serif;
@@ -137,51 +89,6 @@ $off-canvas-width: 250px;
     text-decoration: none;
     background: #242424;
   }
-}
-
-// JUST SOME LAYOUT
-.container {
-  @include container;
-}
-
-header,
-article,
-aside {
-  margin-bottom: gutter();
-  border: 2px solid #888;
-}
-
-header {
-  padding: 1em;
-}
-
-article {
-  padding: 2em;
-
-  @include breakpoint($bp-medium) {
-    @include span(8);
-  }
-}
-
-aside {
-  padding: 2em;
-
-  @include breakpoint($bp-medium) {
-    @include span(4 last);
-  }
-}
-
-footer {
-  padding: 1em;
-  clear: both;
-  border: 2px solid #888;
-}
-
-.browserupgrade {
-  padding: 0.2em 0;
-  margin: 0.2em 0;
-  color: #000;
-  background: #ccc;
 }
 
 // INSERT YOUR MAGIC HERE :)
