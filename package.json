@@ -14,7 +14,7 @@
   "license": {
     "type": "MIT",
     "url": "https://github.com/S1SYPHOS/Jekyll-Foundation5-Starter-Kit/blob/master/LICENSE.txt"
-},
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -33,6 +33,7 @@
     "grunt-jekyll": "^0.4.2",
     "grunt-modernizr": "^0.6.0",
     "grunt-penthouse": "^0.2.1",
+    "grunt-purifycss": "^0.1.0",
     "grunt-sass": "^0.18.1",
     "grunt-scss-lint": "^0.3.6",
     "grunt-usemin": "^3.0.0",
