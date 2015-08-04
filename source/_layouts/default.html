@@ -9,31 +9,35 @@
   <!--[if lt IE 9]>
   <div data-alert class="browserupgrade" class="browsehappy">Please <a href="http://browsehappy.com/">upgrade your browser</a>. <a href="#" class="close">&times;</a></div>
   <![endif]-->
-  <div class="outer-wrap">
+  <div class="off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
-      <div class="off-canvas">
-        <ul class="off-canvas-list">
-          <li class="off-canvas-list__item"><a href="#">Link to Page 1</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 2</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 3</a></li>
-          <li class="off-canvas-list__item"><a href="#">Link to Page 4</a></li>
-          <li class="off-canvas-list__item off-canvas--close"><a href="#">Close</a></li>
-        </ul>
-      </div>
-      <div class="container">
-        <header role="banner">
+      <header class="row" role="banner">
           <h1>This is a header</h1>
 
           <div class="off-canvas-toggle">
-            <button class="off-canvas-toggle__button">Click Me!</button>
-        </div>
-        </header>
-        <div role="main">
-          {{ content }}
-          <aside><h3>This is an aside</h3></aside>
-        </div>
-        <footer role="contentinfo"><h2>This is a footer</h2></footer>
+            <button class="right-off-canvas-toggle">Click Me!</button>
+          </div>
+      </header>
+
+      <aside class="right-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><a href="#">Link to Page 1</a></li>
+          <li><a href="#">Link to Page 2</a></li>
+          <li><a href="#">Link to Page 3</a></li>
+          <li><a href="#">Link to Page 4</a></li>
+          <li><a class="right-off-canvas-toggle" href="#">Close</a></li>
+        </ul>
+      </aside>
+
+      <div id="content" class="row" role="main">
+        {{ content }}
+        <aside class="medium-4 columns"><h3>This is an aside</h3></aside>
       </div>
+
+      <footer class="row" role="contentinfo"><h2>This is a footer</h2></footer>
+
+      <a class="exit-off-canvas"></a>
+
     </div>
   </div>
 
@@ -41,7 +45,11 @@
   <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
   <!-- build:js(source) /js/scripts.js -->
   <script src="/js/plugins.js"></script>
+  <script src="/js/vendor/foundation.min.js"></script>
   <script src="/js/main.js"></script>
   <!-- endbuild -->
+  <script>$(document).foundation();</script>
+
+  </script>
 </body>
 </html>
