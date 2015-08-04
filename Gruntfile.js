@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 
     watch: {
       sass: {
-        files: '<%= config.source %>/_scss/**/*.scss',
+        files: ['<%= config.source %>/_scss/**/*.scss', 'Gruntfile.js'],
         tasks: ['sass:single', 'autoprefixer', 'penthouse']
       },
       jekyll: {
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
       },
       jQuery: {
         files: {
-          '<%= config.source %>/js/vendor/jquery.js': 'bower_components/foundation/js/vendor/jquery/jquery.js'
+          '<%= config.source %>/js/vendor/jquery.js': 'bower_components/foundation/js/vendor/jquery.js'
         }
       },
       foundation: {
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
       },
       single: {
         files: {
-          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/style.scss'
+          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/style_single.scss'
         }
       },
       split: {
@@ -147,7 +147,7 @@ module.exports = function(grunt) {
 
     purifycss: {
       dist: {
-        src: ['<%= config.dest %>/*.html', '.tmp/concat/js/*.js'],
+        src: ['<%= config.dest %>/*.html', '<%= config.source %>/js/*.js'],
         css: ['.tmp/concat/css/*.css'],
         dest: '.tmp/concat/css/style.css'
       }
@@ -174,7 +174,7 @@ module.exports = function(grunt) {
     cssmin: {
       options: {
         shorthandCompacting: false,
-        roundingPrecision: -1,
+        roundingPrecision: -1
         // compatibility: 'ie8'
       },
       generated: { },
@@ -295,7 +295,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('prod', [
       'sass:single',
-      // 'copy', << what to copy?
       'jekyll:prod',
       'modernizr',
       'useminPrepare',
@@ -307,14 +306,11 @@ module.exports = function(grunt) {
       'uglify',
       'usemin',
       'cacheBust',
-      'htmlmin',
-      'browserSync',
-      'watch'
+      'htmlmin'
     ]);
 
     grunt.registerTask('split', [
       'sass:split',
-      // 'copy', << what to copy?
       'jekyll:prod',
       'modernizr',
       'useminPrepare',

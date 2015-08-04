@@ -1,94 +1,34 @@
-// DEFAULT STYLES
-html {
-  font-family: "PT Sans", sans-serif;
-  line-height: 1.5;
+// JUST SOME LAYOUT
+
+header,
+article,
+aside {
+  margin-bottom: 2rem !important;
+  border: 2px solid #888;
 }
 
-html,
-body {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
+header {
+  padding: 1em;
 }
 
-body {
-  position: relative;
+article {
+  padding: 2em;
+}
+
+#content aside {
+  padding: 2em;
+}
+
+footer {
+  padding: 1em;
+  border: 2px solid #888;
+}
+
+.browserupgrade {
+  padding: 0.2em 0;
+  margin: 0.2em 0;
   color: #000;
-  text-size-adjust: 100%;
-  background: #fff;
-}
-
-a {
-  color: #268bd2;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-// MEDIA QUERIES
-$bp-small: 30em;
-$bp-medium: 48em;
-$bp-large: 64em;
-
-// OFF-CANVAS-NAVIGATION
-$off-canvas-width: 250px;
-
-.outer-wrap,
-.inner-wrap {
-  height: 100%;
-}
-
-.outer-wrap {
-  overflow: hidden;
-}
-
-.inner-wrap {
-  transition: transform 0.3s ease;
-  backface-visibility: hidden;
-
-  &.is-open {
-    transform: translate3d($off-canvas-width, 0, 0);
-  }
-}
-
-.off-canvas {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -$off-canvas-width;
-  width: $off-canvas-width;
-  background: #333333;
-  transition: transform 500ms ease 0s;
-}
-
-.off-canvas-list {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.off-canvas-list__item a {
-  display: block;
-  padding: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
-  border-bottom: 1px solid #262626;
-  transition: #dedede 300ms ease 0s;
-
-  &:active,
-  &:hover {
-    text-decoration: none;
-    background: #242424;
-  }
+  background: #ccc;
 }
 
 // INSERT YOUR MAGIC HERE :)
