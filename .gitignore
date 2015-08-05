@@ -24,6 +24,7 @@ node_modules
 bower_components
 Gemfile.lock
 .tmp
+source/css/*
 source/_includes/critical.css
 source/htaccess
 build

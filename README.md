@@ -30,12 +30,12 @@ Now it's time to install the project's dependencies:
 Everything's ready to get started right away - here's my Grunt workflow:
 - `grunt dev`: Compiles SASS, builds the site and opens it in the default browser, watches for changes and injects them right away.
 - `grunt prod`: Builds a bleeding edge website into the `build` directory.
-- `grunt split`: Same as `grunt prod`, but fixes problems with non-working JS components. If something you need to doesn't work, e.g. off-canvas navigation, head over to `source/_scss/split` and
-  1. comment it out in `_foundation_split.scss` and
-  2. add it after `global` in `custom_split.scss`
+- `grunt split`: Same as `grunt prod`, but fixes problems with non-working JS components. If something you need doesn't work, e.g. off-canvas navigation, head over to `source/_scss/split` and
+  1. comment out this component in `_foundation_split.scss` and
+  2. add it right after `global` in `custom_split.scss`
 - `grunt check`: Checks code quality of SASS and JS files, Jekyll health and also for outdated packages.
 
 **It's possible to get started even quicker - with `bundle exec jekyll serve`**
 
 ## Special Thanks
-I'd like to thank everybody that's making great software - you people are awesome.
+I'd like to thank everybody that's making great software - you people are awesome. Also I'm always thankful for feedback and bug reports :)
