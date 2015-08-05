@@ -145,11 +145,15 @@ module.exports = function(grunt) {
       }
     },
 
-    purifycss: {
+    uncss: {
       dist: {
-        src: ['<%= config.dest %>/*.html', '<%= config.source %>/js/*.js'],
-        css: ['.tmp/concat/css/*.css'],
-        dest: '.tmp/concat/css/style.css'
+        options: {
+          // ignoreSheets : [/fonts.googleapis/],
+          // ignore: ['.some-class', '#some-id']
+        },
+        files: {
+          '<%= config.source %>/css/style.css': '<%= config.dest %>/**/*.html'
+        }
       }
     },
 
@@ -260,7 +264,7 @@ module.exports = function(grunt) {
         bundleExec: true,
         colorizeOutput: true,
         config: '.scss-lint.yml',
-        exclude: ['<%= config.source %>/_scss/_normalize.scss']
+        exclude: ['<%= config.source %>/_scss/_settings.scss']
       },
       check: '<%= config.source %>/_scss/**/*.scss'
     },
@@ -297,9 +301,9 @@ module.exports = function(grunt) {
       'sass:single',
       'jekyll:prod',
       'modernizr',
+      'uncss',
       'useminPrepare',
       'concat',
-      'purifycss',
       'autoprefixer',
       'csscomb',
       'cssmin',
@@ -313,9 +317,9 @@ module.exports = function(grunt) {
       'sass:split',
       'jekyll:prod',
       'modernizr',
+      'uncss',
       'useminPrepare',
       'concat',
-      'purifycss',
       'cssmin:combine',
       'autoprefixer',
       'csscomb',
@@ -323,7 +327,9 @@ module.exports = function(grunt) {
       'uglify',
       'usemin',
       'cacheBust',
-      'htmlmin'
+      'htmlmin',
+      'browserSync',
+      'watch'
     ]);
 
     grunt.registerTask('check', [
