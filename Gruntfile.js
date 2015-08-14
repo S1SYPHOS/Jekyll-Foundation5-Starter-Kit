@@ -48,7 +48,8 @@ module.exports = function(grunt) {
           src : [
             '<%= config.dest %>/css/*.css',
             '<%= config.dest %>/js/*.js',
-            '<%= config.dest %>/*.html'
+            '<%= config.dest %>/*.html',
+            '<%= config.source %>/img/**/*.{jpg,png,svg,gif}'
           ]
         },
         options: {
@@ -63,11 +64,11 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: ['<%= config.source %>/_scss/**/*.scss', 'Gruntfile.js'],
-        tasks: ['sass:single', 'postcss', 'penthouse']
+        tasks: ['sass:single', 'postcss:dev', 'penthouse']
       },
       jekyll: {
-        files: ['<%= config.source %>/**/*.html', '<%= config.source %>/css/*.css', '<%= config.source %>/js/*.js'],
-        tasks: ['jekyll:dev', 'modernizr']
+        files: ['Gruntfile.js', '<%= config.source %>/**/*.{html,md}'],
+        tasks: ['jekyll:dev']
       }
     },
 
@@ -95,6 +96,8 @@ module.exports = function(grunt) {
         }
       },
     },
+
+    clean: ['.tmp'],
 
 
     // USEMIN SECTION
@@ -132,14 +135,21 @@ module.exports = function(grunt) {
       options: {
         includePaths: ['bower_components/foundation/scss', 'bower_components/foundation/scss/foundation/components']
       },
+      dev: {
+        files: {
+          '.tmp/css/style.css': '<%= config.source %>/_scss/style_single.scss'
+
+        }
+      },
       single: {
         files: {
-          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/style_single.scss'
+          '<%= config.dest %>/css/style.css': '<%= config.source %>/_scss/style_single.scss'
+
         }
       },
       split: {
         files: {
-          '<%= config.source %>/css/style.css': '<%= config.source %>/_scss/split/style_split.scss',
+          '.tmp/css/style.css': '<%= config.source %>/_scss/split/style_split.scss',
           '<%= config.source %>/css/_custom.css': '<%= config.source %>/_scss/split/custom_split.scss'
         }
       }
@@ -152,7 +162,7 @@ module.exports = function(grunt) {
           // ignore: ['.some-class', '#some-id']
         },
         files: {
-          '<%= config.source %>/css/style.css': '<%= config.dest %>/**/*.html'
+          '<%= config.dest %>/css/style.css': '<%= config.dest %>/**/*.html'
         }
       }
     },
@@ -161,11 +171,15 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer-core')({browsers: 'last 2 versions, > 5%, ie >= 8'})
+          require('autoprefixer-core')({browsers: 'last 2 versions, > 2%, ie >= 8, Firefox ESR, Opera 12.1'})
         ]
       },
-      dist: {
+      prod: {
         src: '.tmp/concat/css/style.css'
+      },
+      dev: {
+        src: '.tmp/css/style.css',
+        dest: '<%= config.dest %>/css/style.css'
       }
     },
 
@@ -186,7 +200,7 @@ module.exports = function(grunt) {
       generated: { },
       combine: {
         files: {
-          '.tmp/concat/css/style.css': ['.tmp/concat/css/style.css', '<%= config.source %>/css/_custom.css']
+          '.tmp/concat/css/style.css': ['<%= config.dest %>/css/style.css', '<%= config.source %>/css/_custom.css']
         }
       }
     },
@@ -194,7 +208,7 @@ module.exports = function(grunt) {
     penthouse: {
       dist: {
         outfile : '<%= config.source %>/_includes/critical.css',
-        css : '<%= config.source %>/css/style.css',
+        css : '<%= config.dest %>/css/style.css',
         url : 'http://localhost:3000',
         width : 1280,
         height : 800
@@ -292,23 +306,25 @@ module.exports = function(grunt) {
   });
 
     grunt.registerTask('dev', [
-      'sass:single',
+      'clean',
+      'sass:dev',
       'jekyll:dev',
-      'modernizr',
+      'postcss:dev',
       'browserSync',
     	'watch'
     ]);
 
     grunt.registerTask('prod', [
+      'clean',
       'sass:single',
       'jekyll:prod',
       'modernizr',
       'uncss',
       'useminPrepare',
       'concat',
-      'postcss',
+      'postcss:prod',
       'csscomb',
-      'cssmin',
+      'cssmin:generated',
       'uglify',
       'usemin',
       'cacheBust',
@@ -316,6 +332,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('split', [
+      'clean',
       'sass:split',
       'jekyll:prod',
       'modernizr',
@@ -323,7 +340,7 @@ module.exports = function(grunt) {
       'useminPrepare',
       'concat',
       'cssmin:combine',
-      'postcss',
+      'postcss:prod',
       'csscomb',
       'cssmin:generated',
       'uglify',
