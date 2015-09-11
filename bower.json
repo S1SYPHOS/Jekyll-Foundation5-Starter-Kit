@@ -10,7 +10,7 @@
     "foundation": "zurb/bower-foundation"
   },
   "devDependencies": {
-    "loadcss": "~0.1.7",
+    "loadcss": "~0.1.8",
     "OptimizedWebfontLoading": "git://github.com/bdadam/OptimizedWebfontLoading.git"
   }
 }
